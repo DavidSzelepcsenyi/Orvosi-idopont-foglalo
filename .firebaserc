@@ -1,0 +1,14 @@
+{
+  "targets": {
+    "webker": {
+      "hosting": {
+        "webker": [
+          "webker"
+        ]
+      }
+    }
+  },
+  "projects": {
+    "default": "webker"
+  }
+}
