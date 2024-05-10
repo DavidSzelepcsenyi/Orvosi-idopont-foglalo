@@ -1,6 +1,7 @@
 import { BreakpointObserver } from '@angular/cdk/layout';
 import {Component,ViewChild,} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
+import { AuthService } from './services/auth.service';
 
 @Component({
   selector: 'app-root',
@@ -13,14 +14,22 @@ export class AppComponent {
   sidenav!: MatSidenav;
   isCollapsed = true;
 
-  constructor(private observer: BreakpointObserver) {}
+  constructor(private observer: BreakpointObserver, public AuthService: AuthService) {}
 
   ngOnInit() {
   }
   toggleMenu() {
-
     this.sidenav.toggle();
-    this.isCollapsed = false; // On mobile, the menu can never be collapsed
+    this.isCollapsed = false;
+  }
 
+  logout() {
+    this.AuthService.logout()
+      .then(() => {
+        console.log('Logged out successfully');
+      })
+      .catch(error => {
+        console.error('Error logging out:', error);
+      });
   }
 }

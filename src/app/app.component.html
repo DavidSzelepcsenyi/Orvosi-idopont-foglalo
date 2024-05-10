@@ -13,7 +13,8 @@
             <a routerLink="/Appointments">Appointments</a>
             <a routerLink="/MyAppointments">My Appointments</a>
             <a routerLink="/Schedule">Schedule</a>
-            <a routerLink="/DocInf">Doctor's information</a>
+            <a routerLink="/AddDocInf">Add Doctor's information</a>
+            <button mat-button color="warn" (click)="logout()" *ngIf="AuthService.isLoggedIn">Logout</button>
         </span>
       </mat-nav-list>
     </mat-sidenav>
