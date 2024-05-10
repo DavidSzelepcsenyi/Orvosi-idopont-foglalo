@@ -1,1 +1,10 @@
-<p>my-appointments works!</p>
+<h2>Your Appointments:</h2>
+<div *ngFor="let appointment of MyAppointments" id="appointment-container">
+    <div>
+    <p>Doctor: {{ appointment.doctorLastname }} {{ appointment.doctorFirstName }}</p>
+    <p>Start Time: {{ appointment.start }}</p>
+    <p>End Time: {{ appointment.end }}</p>
+    <p>In Room: {{ appointment.room }}</p>
+    <button mat-button color="warn" (click)="onDeleteAppointment(appointment.id)">Delete</button>
+    </div>
+  </div>

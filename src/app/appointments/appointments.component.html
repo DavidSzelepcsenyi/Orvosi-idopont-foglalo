@@ -1,1 +1,26 @@
-<p>appointments works!</p>
+<h2>Make an Appointment</h2>
+<p>A standard Appointment is 30 minutes long, please keep this in mind</p>
+<form [formGroup]="appointmentFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="Start">Start:</mat-label>
+    <input matInput type="time"  formControlName="Start">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="End">End:</mat-label>
+    <input matInput type="time" formControlName="End">
+  </mat-form-field>
+  <br>
+  <mat-radio-group formControlName="selectedDoctor">
+    <div *ngFor="let doctor of doctors" id="doctor-container">
+      <div>
+        <mat-radio-button [value]="doctor.id"></mat-radio-button>
+        <label for="selectedDoctor">{{ doctor.lastName}} {{ doctor.firstName}}</label>
+        <br>
+      </div>
+      <br>
+    </div>
+  </mat-radio-group>
+  <button mat-button type="submit">Submit</button>
+</form>
+

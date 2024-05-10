@@ -1,0 +1,19 @@
+h2{
+    text-align: center;
+    margin-top: 100px;
+}
+p{
+    text-align: center;
+}
+form{
+    text-align: center;
+}
+#appointment-container{
+    text-align: center;
+}
+#appointment-container div{
+    border: 1px solid black;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}

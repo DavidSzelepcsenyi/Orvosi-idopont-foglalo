@@ -8,6 +8,7 @@ import { DocInfService } from '../services/doc-inf.service';
 import { getAuth } from "firebase/auth";
 import { TimetableService } from '../services/timetable.service';
 import { Timetable } from '../model/timetable';
+import { UserService } from '../services/user.service';
 
 @Component({
   selector: 'app-doc-inf',
@@ -18,13 +19,23 @@ export class DocInfComponent implements OnInit {
 
   currentUser: any;
   timetables: Timetable [] = [];
+  firstName: any = "";
+  lastName: any ="";
+
 
   docInfFormGroup = new FormGroup({
     roomNumber: new FormControl(),
     selectedTimetable: new FormControl()
   });
 
-  constructor( private docInfService: DocInfService, private router: Router, private firestore: AngularFirestore, private authService: AuthService, private TimetableService : TimetableService) { }
+  constructor( 
+    private docInfService: DocInfService, 
+    private router: Router, 
+    private firestore: AngularFirestore, 
+    private authService: AuthService, 
+    private TimetableService : TimetableService,
+    private UserService : UserService,
+  ) { }
 
 
   ngOnInit() {
@@ -33,8 +44,13 @@ export class DocInfComponent implements OnInit {
       this.TimetableService.findAll().subscribe(timetables => {
         this.timetables = timetables;
       });
+      this.UserService.findUserByID(this.currentUser.uid).subscribe(user => {
+        this.firstName = user?.firstName;
+        this.lastName = user?.lastName;
+      });
     });
   }
+  
 
 
   onSubmit() {
@@ -42,11 +58,9 @@ export class DocInfComponent implements OnInit {
     const roomNumber = this.docInfFormGroup.get("roomNumber")?.value;
     const selectedTimetable = this.docInfFormGroup.get("selectedTimetable")?.value;
 
-    const doctor = new Doctor(did, this.currentUser.uid, roomNumber, selectedTimetable);
-
-    
-      this.docInfService.create(doctor);
-      this.router.navigate(['/DocInf']);
-  }
+    const doctor = new Doctor(did, this.currentUser.uid,this.firstName,this.lastName, roomNumber, selectedTimetable);
+    this.docInfService.create(doctor);
+    this.router.navigate(['/Appointments']);
+    }
 
 }
