@@ -24,6 +24,10 @@ import { MatListModule } from "@angular/material/list"
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
+import { MenuComponent } from './menu/menu.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { DocInfComponent } from './doc-inf/doc-inf.component';
+import { MatRadioModule } from '@angular/material/radio';
 
 
 @NgModule({
@@ -32,7 +36,10 @@ import { ReactiveFormsModule } from '@angular/forms';
     LoginComponent,
     RegisterComponent,
     AppointmentsComponent,
-    MyAppointmentsComponent
+    MyAppointmentsComponent,
+    MenuComponent,
+    ScheduleComponent,
+    DocInfComponent
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -50,6 +57,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     MatSlideToggleModule,
     ReactiveFormsModule,
     MatInputModule,
+    MatRadioModule,
     provideFirebaseApp(() => initializeApp(environment.firebaseConfig)),
     provideAuth(() => getAuth()),
     provideFirestore(() => getFirestore()),

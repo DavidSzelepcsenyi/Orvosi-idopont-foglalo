@@ -1,0 +1,54 @@
+<h2>Add your Schedule</h2>
+<form [formGroup]="scheduleFormGroup" (ngSubmit)="onSubmit()">
+  <mat-form-field>
+    <mat-label for="monStart">Monday Start:</mat-label>
+    <input matInput type="time"  formControlName="monStart">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="monEnd">Monday End:</mat-label>
+    <input matInput type="time" formControlName="monEnd">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="tuesStart">Tuesday Start:</mat-label>
+    <input matInput type="time" formControlName="tuesStart">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="tuesEnd">Tuesday End:</mat-label>
+    <input matInput type="time" formControlName="tuesEnd">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="wedStart">Wednesday Start:</mat-label>
+    <input matInput type="time" formControlName="wedStart">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="wedEnd">Wednesday Start:</mat-label>
+    <input matInput type="time" formControlName="wedEnd">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="thurStart">Thursday Start:</mat-label>
+    <input matInput type="time" formControlName="thurStart">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="thurEnd">Thursday End:</mat-label>
+    <input matInput type="time" formControlName="thurEnd">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="friStart">Friday Start:</mat-label>
+    <input matInput type="time" formControlName="friStart">
+  </mat-form-field>
+  <br>
+  <mat-form-field>
+    <mat-label for="friEnd">Friday End:</mat-label>
+    <input matInput type="time" formControlName="friEnd">
+  </mat-form-field>
+  <br>
+  <button mat-button type="submit">Submit</button>
+</form>

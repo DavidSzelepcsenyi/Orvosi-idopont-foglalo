@@ -1,31 +1,32 @@
+import { Time } from "@angular/common"
 import { Timestamp } from "@angular/fire/firestore"
 
 export class Timetable {
     public id: string
-    public monStart: Timestamp
-    public monEnd: Timestamp
-    public tuesStart: Timestamp
-    public tuesEnd: Timestamp
-    public wedStart: Timestamp
-    public wedEnd: Timestamp
-    public thurStart: Timestamp
-    public thurEnd: Timestamp
-    public friStart: Timestamp
-    public friEnd: Timestamp
+    public monStart: Time
+    public monEnd: Time
+    public tuesStart: Time
+    public tuesEnd: Time
+    public wedStart: Time
+    public wedEnd: Time
+    public thurStart: Time
+    public thurEnd: Time
+    public friStart: Time
+    public friEnd: Time
 
   
     constructor(
         id: string, 
-        monStart: Timestamp,
-        monEnd: Timestamp,
-        tuesStart: Timestamp,
-        tuesEnd: Timestamp,
-        wedStart: Timestamp,
-        wedEnd: Timestamp,
-        thurStart: Timestamp,
-        thurEnd: Timestamp,
-        friStart: Timestamp,
-        friEnd: Timestamp
+        monStart: Time,
+        monEnd: Time,
+        tuesStart: Time,
+        tuesEnd: Time,
+        wedStart: Time,
+        wedEnd: Time,
+        thurStart: Time,
+        thurEnd: Time,
+        friStart: Time,
+        friEnd: Time,
     ) {
   
       this.id = id
@@ -44,14 +45,14 @@ export class Timetable {
     toJSON(): any {
       return{
       id: this.id,
-      mondStart: this.monStart,
+      monStart: this.monStart,
       monEnd: this.monEnd,
       tuesStart: this.tuesStart,
       tuesEnd: this.tuesEnd,
-      webStart: this.wedStart,
+      wedStart: this.wedStart,
       wedEnd: this.wedEnd,
-      thusStart: this.thurStart,
-      thusEnd: this.thurEnd,
+      thurStart: this.thurStart,
+      thurEnd: this.thurEnd,
       friStart: this.friStart,
       friEnd: this.friEnd,
       }

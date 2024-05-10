@@ -4,6 +4,8 @@ import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
 import { MyAppointmentsComponent } from './my-appointments/my-appointments.component';
+import { ScheduleComponent} from './schedule/schedule.component';
+import { DocInfComponent } from './doc-inf/doc-inf.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Register', pathMatch: 'full'},
@@ -11,6 +13,9 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Appointments', component: AppointmentsComponent },
   { path: 'MyAppointments', component: MyAppointmentsComponent },
+  { path: 'DocInf', component: DocInfComponent},
+  { path: 'Schedule', component: ScheduleComponent },
+  
 ];
 
 @NgModule({

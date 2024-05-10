@@ -1,13 +1,19 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
+import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { User } from '../model/user';
+import { Observable } from 'rxjs';
+import { switchMap, first } from 'rxjs/operators';
+
 
 @Injectable({
   providedIn: 'root'
 })
 export class UserService {
 
-  constructor(private firestore: AngularFirestore) { }
+  constructor(private firestore: AngularFirestore, private afAuth: AngularFireAuth) { }
+
+  
 
   collectionName = "Users"
 

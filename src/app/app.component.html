@@ -1,1 +1,23 @@
-<router-outlet></router-outlet>
+<mat-toolbar color="primary">
+    <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
+        <mat-icon>menu</mat-icon>
+    </button>
+    <h1>Make an Appointment</h1>
+  </mat-toolbar>
+  <mat-sidenav-container autosize>
+    <mat-sidenav>
+      <mat-nav-list>
+        <span class="entry">
+            <a routerLink="/Login">Login</a>
+            <a routerLink="/Register">Register</a>
+            <a routerLink="/Appointments">Appointments</a>
+            <a routerLink="/MyAppointments">My Appointments</a>
+            <a routerLink="/Schedule">Schedule</a>
+            <a routerLink="/DocInf">Doctor's information</a>
+        </span>
+      </mat-nav-list>
+    </mat-sidenav>
+    <mat-sidenav-content>
+      <router-outlet></router-outlet>
+    </mat-sidenav-content>
+  </mat-sidenav-container>

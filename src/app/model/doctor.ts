@@ -28,4 +28,5 @@ export class Doctor {
         timetable: this.timetable
       }
     }
+
 }
