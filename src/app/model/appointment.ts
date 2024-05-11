@@ -14,6 +14,7 @@ export class Appointment {
     public start : Time
     public end : Time
     public room: number
+    public isUrgent: boolean
 
   
     constructor(
@@ -27,6 +28,7 @@ export class Appointment {
         start : Time,
         end : Time,
         room: number,
+        isUrgent: boolean
     ) {
   
       this.id = id
@@ -39,6 +41,7 @@ export class Appointment {
       this.start = start
       this.end = end
       this.room = room
+      this.isUrgent = isUrgent
     }
 
     toJSON(): any {
@@ -52,7 +55,8 @@ export class Appointment {
         patientLastName: this.patientLastName,
         start: this.start,
         end: this.end,
-        room: this.room
+        room: this.room,
+        isUrgent: this.isUrgent,
       }
     }
     

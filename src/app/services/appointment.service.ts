@@ -25,9 +25,10 @@ export class AppointmentService {
     return this.firestore.collection<Appointment>(this.collectionName).doc(id).valueChanges()
   }
 
-  update(appointment: Appointment) {
+  updateUrgency(appointment: Appointment) {
     return this.firestore.collection<Appointment>(this.collectionName)
-      .doc(appointment.id).set(appointment.toJSON())
+      .doc(appointment.id)
+      .update({ isUrgent: !appointment.isUrgent });
   }
 
   delete(id: string) {

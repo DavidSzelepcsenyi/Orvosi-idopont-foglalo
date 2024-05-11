@@ -2,6 +2,7 @@ import { BreakpointObserver } from '@angular/cdk/layout';
 import {Component,ViewChild,} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './services/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -14,7 +15,7 @@ export class AppComponent {
   sidenav!: MatSidenav;
   isCollapsed = true;
 
-  constructor(private observer: BreakpointObserver, public AuthService: AuthService) {}
+  constructor(private observer: BreakpointObserver, public AuthService: AuthService, private router : Router) {}
 
   ngOnInit() {
   }
@@ -27,6 +28,7 @@ export class AppComponent {
     this.AuthService.logout()
       .then(() => {
         console.log('Logged out successfully');
+        this.router.navigate(['/Login']);
       })
       .catch(error => {
         console.error('Error logging out:', error);

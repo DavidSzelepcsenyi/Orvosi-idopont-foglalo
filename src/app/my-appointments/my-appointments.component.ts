@@ -1,13 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormControl, FormGroup } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
-import { Doctor } from '../model/doctor';
 import { DocInfService } from '../services/doc-inf.service';
-import { getAuth } from "firebase/auth";
-import { Time } from '@angular/common';
-import { User } from '../model/user';
 import { UserService } from '../services/user.service';
 import { Appointment } from '../model/appointment';
 import { AppointmentService } from '../services/appointment.service';
@@ -22,6 +17,8 @@ export class MyAppointmentsComponent {
   currentUser: any;
   Appointments: Appointment[] = [];
   MyAppointments: Appointment[] = [];
+  appointment: any;
+  isUrgentUpdated = false;
 
   constructor( 
     private docInfService: DocInfService, 
@@ -41,6 +38,7 @@ export class MyAppointmentsComponent {
       this.Appointments = appointments;
       this.MyAppointments = this.Appointments.filter(appointment => appointment.patient === this.currentUser.uid);
     });
+    this.isUrgentUpdated = false;
   }
 
   onDeleteAppointment(appointmentId: string) {
@@ -52,7 +50,16 @@ export class MyAppointmentsComponent {
         console.error('Error deleting appointment:', error);
       });
     }
-
-
+    makeUrgent(appointmentId: string) {
+        this.AppointmentService.findAppointmentByID(appointmentId)
+          .subscribe(appointment => {
+            if (appointment && !this.isUrgentUpdated) {
+              this.appointment = appointment;
+              this.AppointmentService.updateUrgency(appointment);
+              this.isUrgentUpdated = true;
+            }
+          });
+      this.isUrgentUpdated = false
+    }
 
 }

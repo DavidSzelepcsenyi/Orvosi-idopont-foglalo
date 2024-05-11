@@ -1,10 +1,12 @@
 <h2>Your Appointments:</h2>
 <div *ngFor="let appointment of MyAppointments" id="appointment-container">
-    <div>
+  <div appUrgency [isUrgent]="appointment.isUrgent">
     <p>Doctor: {{ appointment.doctorLastname }} {{ appointment.doctorFirstName }}</p>
     <p>Start Time: {{ appointment.start }}</p>
     <p>End Time: {{ appointment.end }}</p>
     <p>In Room: {{ appointment.room }}</p>
-    <button mat-button color="warn" (click)="onDeleteAppointment(appointment.id)">Delete</button>
-    </div>
+    <button mat-button color="cold" (click)="onDeleteAppointment(appointment.id)">Delete</button>
+    <p>Is it Urgent?</p>
+    <button mat-fab (click)="makeUrgent(appointment.id)"><mat-icon>feedback</mat-icon></button>
   </div>
+</div>

@@ -64,7 +64,7 @@ export class AppointmentsComponent implements OnInit {
       this.doctorLastName = doctor?.lastName;
       this.room = doctor?.room
       
-      const appointment = new Appointment(aid,selectedDoctor, this.doctorFirstName, this.doctorLastName ,this.currentUser.uid,this.patientFirstName,this.patientLastName, Start, End, this.room);
+      const appointment = new Appointment(aid,selectedDoctor, this.doctorFirstName, this.doctorLastName ,this.currentUser.uid,this.patientFirstName,this.patientLastName, Start, End, this.room, false);
       this.appointmentService.create(appointment);
       this.router.navigate(['/MyAppointments']);
     });

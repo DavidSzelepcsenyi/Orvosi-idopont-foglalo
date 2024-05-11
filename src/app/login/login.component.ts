@@ -22,11 +22,10 @@ export class LoginComponent {
     const password = this.loginFormGroup.get('password')?.value as string;
     this.authService.login(email, password)
       .then((userCredential) => {
-        console.log('User logged in:', userCredential.user);
         this.router.navigate(['/MyAppointments']);
       })
       .catch((error) => {
-        console.error('Login error:', error);
+        alert("User is not registered")
       });
   }
 }

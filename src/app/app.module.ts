@@ -9,7 +9,6 @@ import { getStorage, provideStorage } from '@angular/fire/storage';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { MatIconModule } from '@angular/material/icon';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { AppointmentsComponent } from './appointments/appointments.component';
@@ -28,6 +27,8 @@ import { MenuComponent } from './menu/menu.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { DocInfComponent } from './doc-inf/doc-inf.component';
 import { MatRadioModule } from '@angular/material/radio';
+import { MatIconModule } from '@angular/material/icon';
+import { UrgencyDirective } from './directives/urgency.directive';
 
 
 @NgModule({
@@ -39,7 +40,8 @@ import { MatRadioModule } from '@angular/material/radio';
     MyAppointmentsComponent,
     MenuComponent,
     ScheduleComponent,
-    DocInfComponent
+    DocInfComponent,
+    UrgencyDirective
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -48,7 +50,6 @@ import { MatRadioModule } from '@angular/material/radio';
     MatSidenavModule,
     MatButtonModule,
     MatListModule,
-    MatIconModule,
     MatToolbarModule,
     MatIconModule,
     BrowserModule,

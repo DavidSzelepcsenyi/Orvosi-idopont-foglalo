@@ -18,7 +18,7 @@ export class AuthGuardService implements CanActivate{
         if (loggedIn) {
           const requiresDoctor = this.router.getCurrentNavigation()?.extras?.state?.['requiresDoctor'];
           if (requiresDoctor && !this.authService.isDoctor()) {
-            this.router.navigate(['/unauthorized']);
+            this.router.navigate(['/Login']);
             return false;
           }
           return true;
