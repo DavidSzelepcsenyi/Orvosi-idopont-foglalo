@@ -4,6 +4,7 @@ import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
 
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
@@ -15,10 +16,18 @@ export class AppComponent {
   sidenav!: MatSidenav;
   isCollapsed = true;
 
-  constructor(private observer: BreakpointObserver, public AuthService: AuthService, private router : Router) {}
+  currentPageRoute = window.location.pathname;
 
-  ngOnInit() {
+  constructor(
+    private observer: BreakpointObserver, 
+    public AuthService: AuthService, 
+    private router : Router, 
+  ) {}
+
+  ngDoCheck() {
+    this.currentPageRoute = window.location.pathname;
   }
+
   toggleMenu() {
     this.sidenav.toggle();
     this.isCollapsed = false;

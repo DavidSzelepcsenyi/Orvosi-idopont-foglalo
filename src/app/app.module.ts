@@ -30,6 +30,7 @@ import { MatRadioModule } from '@angular/material/radio';
 import { MatIconModule } from '@angular/material/icon';
 import { UrgencyDirective } from './directives/urgency.directive';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
+import { PipePipe } from './pipe.pipe';
 
 
 @NgModule({
@@ -43,7 +44,8 @@ import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.co
     ScheduleComponent,
     DocInfComponent,
     UrgencyDirective,
-    DoctorsScheduleComponent
+    DoctorsScheduleComponent,
+    PipePipe,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),

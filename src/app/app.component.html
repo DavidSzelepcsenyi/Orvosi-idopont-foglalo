@@ -2,7 +2,7 @@
     <button mat-icon-button aria-label="Menu icon" (click)="toggleMenu()">
         <mat-icon>menu</mat-icon>
     </button>
-    <h1>Make an Appointment</h1>
+    <h1>{{ currentPageRoute | pageTitle }}</h1>
   </mat-toolbar>
   <mat-sidenav-container autosize>
     <mat-sidenav>
@@ -23,3 +23,5 @@
       <router-outlet></router-outlet>
     </mat-sidenav-content>
   </mat-sidenav-container>
+
+  
