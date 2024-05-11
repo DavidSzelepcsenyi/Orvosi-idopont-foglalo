@@ -11,7 +11,6 @@ import { UserService } from './user.service';
 export class AuthService {
 
   user$: Observable<any>;
-  userId: any;
 
   constructor(private afAuth: AngularFireAuth, private auth: Auth, public UserService : UserService) {
     this.user$ = this.afAuth.authState.pipe(
@@ -35,14 +34,9 @@ export class AuthService {
     return this.auth.currentUser !== null
   }
 
-  isDoctor(): boolean{
-    if(this.isLoggedIn){
-      this.userId = this.auth.currentUser?.uid;
-      this.UserService.findUserByID(this.userId).subscribe(user => {
-        return user?.isDoctor;
-      });
-    }
-    return false;
+  isDoctor(): Observable<boolean> {
+    return this.user$.pipe(
+      map(user => user?.isDoctor || false)
+    );
   }
-
 }

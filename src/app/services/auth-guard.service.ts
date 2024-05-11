@@ -13,14 +13,17 @@ export class AuthGuardService implements CanActivate{
 
   canActivate(): Observable<boolean> {
     return this.authService.user$.pipe(
-      map(user => user && this.authService.isLoggedIn),
-      catchError(error => {
-        console.error(error);
-        return of(false);
-      }),
-      tap(authenticated => {
-        if (!authenticated) {
-          this.router.navigate(['/Login']);
+      map(user => user ? !!user : false),
+      map(loggedIn => {
+        if (loggedIn) {
+          const requiresDoctor = this.router.getCurrentNavigation()?.extras?.state?.['requiresDoctor'];
+          if (requiresDoctor && !this.authService.isDoctor()) {
+            this.router.navigate(['/unauthorized']);
+            return false;
+          }
+          return true;
+        } else {
+          return false;
         }
       })
     );

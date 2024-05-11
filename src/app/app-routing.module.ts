@@ -14,8 +14,8 @@ const routes: Routes = [
   { path: 'Login', component: LoginComponent },
   { path: 'Appointments', canActivate: [AuthGuardService] ,component: AppointmentsComponent },
   { path: 'MyAppointments', canActivate: [AuthGuardService], component: MyAppointmentsComponent },
-  { path: 'AddDocInf', component: DocInfComponent},
-  { path: 'Schedule', component: ScheduleComponent },
+  { path: 'AddDocInf',canActivate: [AuthGuardService],data: { requiresDoctor: true }, component: DocInfComponent},
+  { path: 'Schedule', canActivate: [AuthGuardService],data: { requiresDoctor: true }, component: ScheduleComponent },
   
 ];
 
