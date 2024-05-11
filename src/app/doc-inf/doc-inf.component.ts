@@ -5,7 +5,6 @@ import { Router } from '@angular/router';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
 import { Doctor } from '../model/doctor';
 import { DocInfService } from '../services/doc-inf.service';
-import { getAuth } from "firebase/auth";
 import { TimetableService } from '../services/timetable.service';
 import { Timetable } from '../model/timetable';
 import { UserService } from '../services/user.service';
@@ -56,10 +55,6 @@ export class DocInfComponent implements OnInit {
     });
     
   }
-
-  
-  
-
 
   onSubmit() {
     const roomNumber = this.docInfFormGroup.get("roomNumber")?.value;

@@ -1,0 +1,17 @@
+h2{
+    text-align: center;
+    margin-top: 100px;
+}
+h3{
+    text-align: center;
+}
+
+#schedule-container{
+    text-align: center;
+}
+#schedule-container div{
+    border: 1px solid black;
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+}

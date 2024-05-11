@@ -7,7 +7,7 @@ export class Doctor {
     public firstName: string
     public lastName: string
     public room : string
-    public timetable: Timetable
+    public ttable: string
   
     constructor(
       id: string,
@@ -15,7 +15,7 @@ export class Doctor {
       firstName: string,
       lastName: string,
       room : string,
-      timetable : Timetable
+      timetable : string
     ) {
   
       this.id = id
@@ -23,7 +23,7 @@ export class Doctor {
       this.firstName = firstName
       this.lastName = lastName
       this.room = room
-      this.timetable = timetable
+      this.ttable = timetable
     }
 
     toJSON(): any {
@@ -33,7 +33,7 @@ export class Doctor {
         firstName: this.firstName,
         lastName: this.lastName,
         room: this.room,
-        timetable: this.timetable
+        ttable: this.ttable
       }
     }
 

@@ -7,6 +7,7 @@ import { MyAppointmentsComponent } from './my-appointments/my-appointments.compo
 import { ScheduleComponent} from './schedule/schedule.component';
 import { DocInfComponent } from './doc-inf/doc-inf.component';
 import { AuthGuardService } from './services/auth-guard.service';
+import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 
 const routes: Routes = [
   { path: '', redirectTo: 'Register', pathMatch: 'full'},
@@ -15,7 +16,8 @@ const routes: Routes = [
   { path: 'Appointments', canActivate: [AuthGuardService] ,component: AppointmentsComponent },
   { path: 'MyAppointments', canActivate: [AuthGuardService], component: MyAppointmentsComponent },
   { path: 'AddDocInf',canActivate: [AuthGuardService],data: { requiresDoctor: true }, component: DocInfComponent},
-  { path: 'Schedule', canActivate: [AuthGuardService],data: { requiresDoctor: true }, component: ScheduleComponent },
+  { path: 'AddSchedule', canActivate: [AuthGuardService],data: { requiresDoctor: true }, component: ScheduleComponent },
+  { path: 'DoctorsSchedule',component: DoctorsScheduleComponent }
   
 ];
 

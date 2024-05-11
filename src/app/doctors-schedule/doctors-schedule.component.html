@@ -1,0 +1,19 @@
+<div *ngFor="let doctor of doctors">
+    <h2>Dr.{{ doctor.firstName }} {{ doctor.lastName }}</h2>
+    <div *ngIf="doctor.ttable">
+      <h3>Schedule:</h3>
+      <div *ngFor="let elem of timetables">
+        <div *ngIf="elem.id == doctor.ttable"   id="schedule-container">
+        <p>Monday: {{ elem.monStart }} -  {{ elem.monEnd }}</p>
+        <p>Tuesday: {{ elem.tuesStart }} - {{ elem.tuesEnd }}</p>
+        <p>Wednesday: {{ elem.wedStart }} - {{ elem.wedEnd }}</p>
+        <p>Thursday: {{ elem.thurStart }} -  {{ elem.thurEnd }}</p>
+        <p>Friday: {{ elem.friStart }} -  {{ elem.friEnd }}</p>
+        </div>
+    </div>
+    </div>
+  </div>
+
+
+
+

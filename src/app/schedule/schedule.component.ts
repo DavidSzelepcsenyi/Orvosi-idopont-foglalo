@@ -44,7 +44,7 @@ export class ScheduleComponent {
 
     
       this.timetableService.create(timetable);
-      this.router.navigate(['/DocInf']);
+      this.router.navigate(['/AddDocInf']);
   }
 
 }

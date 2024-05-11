@@ -25,10 +25,10 @@ export class DocInfService {
     return this.firestore.collection<Doctor>(this.collectionName).doc(id).valueChanges()
   }
 
-  update(doctor : Doctor, tmtbl : Timetable, roomnumer : string) {
+  update(doctor : Doctor, tmtbl : string, roomnumer : string) {
     return this.firestore.collection<Doctor>(this.collectionName)
       .doc(doctor.id)
-      .update({timetable: tmtbl, room: roomnumer})
+      .update({ttable: tmtbl, room: roomnumer})
   }
 
   delete(id: string) {

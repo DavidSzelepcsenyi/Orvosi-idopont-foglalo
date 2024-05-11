@@ -8,11 +8,12 @@
     <mat-sidenav>
       <mat-nav-list>
         <span class="entry">
+            <a routerLink="/DoctorsSchedule">Doctor's Schedule</a>
             <a routerLink="/Login">Login</a>
             <a routerLink="/Register">Register</a>
             <a routerLink="/Appointments">Appointments</a>
             <a routerLink="/MyAppointments">My Appointments</a>
-            <a routerLink="/Schedule">Schedule</a>
+            <a routerLink="/AddSchedule">Schedule</a>
             <a routerLink="/AddDocInf">Add Doctor's information</a>
             <button mat-button color="warn" (click)="logout()" *ngIf="AuthService.isLoggedIn">Logout</button>
         </span>
