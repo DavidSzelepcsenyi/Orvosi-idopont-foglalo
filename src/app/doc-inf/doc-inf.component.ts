@@ -75,6 +75,7 @@ export class DocInfComponent implements OnInit {
       const did = this.firestore.createId()
       const doctor = new Doctor(did, this.currentUser.uid,this.firstName,this.lastName, roomNumber, selectedTimetable);
       this.docInfService.create(doctor);
-    } 
+    }
+    this.router.navigate(['/Appointments']);
   }
 }
