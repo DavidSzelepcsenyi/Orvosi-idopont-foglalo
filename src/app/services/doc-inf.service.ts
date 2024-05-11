@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
 import { Doctor } from '../model/doctor';
+import { Timetable } from '../model/timetable';
 
 @Injectable({
   providedIn: 'root'
@@ -24,9 +25,10 @@ export class DocInfService {
     return this.firestore.collection<Doctor>(this.collectionName).doc(id).valueChanges()
   }
 
-  update(doctor : Doctor) {
+  update(doctor : Doctor, tmtbl : Timetable, roomnumer : string) {
     return this.firestore.collection<Doctor>(this.collectionName)
-      .doc(doctor.id).set(doctor.toJSON())
+      .doc(doctor.id)
+      .update({timetable: tmtbl, room: roomnumer})
   }
 
   delete(id: string) {

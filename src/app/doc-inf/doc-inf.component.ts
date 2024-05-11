@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { FormControl, FormGroup } from '@angular/forms';
+import { FormControl, FormGroup, Validator } from '@angular/forms';
 import { Router } from '@angular/router';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
 import { Doctor } from '../model/doctor';
@@ -19,8 +19,10 @@ export class DocInfComponent implements OnInit {
 
   currentUser: any;
   timetables: Timetable [] = [];
+  doctors: Doctor [] = [];
   firstName: any = "";
   lastName: any ="";
+
 
 
   docInfFormGroup = new FormGroup({
@@ -48,19 +50,31 @@ export class DocInfComponent implements OnInit {
         this.firstName = user?.firstName;
         this.lastName = user?.lastName;
       });
+      this.docInfService.findAll().subscribe(doctors =>{
+        this.doctors = doctors
+      })
     });
+    
   }
+
+  
   
 
 
   onSubmit() {
-    const did = this.firestore.createId()
     const roomNumber = this.docInfFormGroup.get("roomNumber")?.value;
     const selectedTimetable = this.docInfFormGroup.get("selectedTimetable")?.value;
-
-    const doctor = new Doctor(did, this.currentUser.uid,this.firstName,this.lastName, roomNumber, selectedTimetable);
-    this.docInfService.create(doctor);
-    this.router.navigate(['/Appointments']);
+    var updating = false;
+    for(const doc of this.doctors){
+      if(doc.user == this.currentUser.uid){
+          this.docInfService.update(doc, selectedTimetable, roomNumber)
+          updating = true;
+      }
     }
-
+    if(!updating){
+      const did = this.firestore.createId()
+      const doctor = new Doctor(did, this.currentUser.uid,this.firstName,this.lastName, roomNumber, selectedTimetable);
+      this.docInfService.create(doctor);
+    } 
+  }
 }
