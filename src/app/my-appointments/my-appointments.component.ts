@@ -19,6 +19,7 @@ export class MyAppointmentsComponent {
   MyAppointments: Appointment[] = [];
   appointment: any;
   isUrgentUpdated = false;
+  isUrgent= false;
 
   constructor( 
     private docInfService: DocInfService, 
@@ -57,6 +58,7 @@ export class MyAppointmentsComponent {
               this.appointment = appointment;
               this.AppointmentService.updateUrgency(appointment);
               this.isUrgentUpdated = true;
+              !this.isUrgent
             }
           });
       this.isUrgentUpdated = false
