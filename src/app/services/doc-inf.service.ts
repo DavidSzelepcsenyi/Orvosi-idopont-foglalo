@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
-import { AngularFirestore } from "@angular/fire/compat/firestore"
+import { AngularFirestore, CollectionReference, Query } from "@angular/fire/compat/firestore"
 import { Doctor } from '../model/doctor';
-import { Timetable } from '../model/timetable';
+
 
 @Injectable({
   providedIn: 'root'
@@ -34,4 +34,5 @@ export class DocInfService {
   delete(id: string) {
     return this.firestore.collection<Doctor>(this.collectionName).doc(id).delete()
   }
+
 }

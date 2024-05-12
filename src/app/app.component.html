@@ -9,8 +9,8 @@
       <mat-nav-list>
         <span class="entry">
             <a routerLink="/DoctorsSchedule">Doctor's Schedule</a>
-            <a routerLink="/Login">Login</a>
-            <a routerLink="/Register">Register</a>
+            <a *ngIf="!AuthService.isLoggedIn" routerLink="/Login">Login</a>
+            <a *ngIf="!AuthService.isLoggedIn" routerLink="/Register">Register</a>
             <a routerLink="/Appointments">Appointments</a>
             <a routerLink="/MyAppointments">My Appointments</a>
             <a routerLink="/AddSchedule">Schedule</a>

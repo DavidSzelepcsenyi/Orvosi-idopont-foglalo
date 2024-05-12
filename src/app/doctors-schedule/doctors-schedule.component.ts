@@ -5,6 +5,7 @@ import { TimetableService } from '../services/timetable.service';
 import { Timetable } from '../model/timetable';
 
 
+
 @Component({
   selector: 'app-doctors-schedule',
   templateUrl: './doctors-schedule.component.html',
