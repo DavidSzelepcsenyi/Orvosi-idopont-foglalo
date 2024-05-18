@@ -32,7 +32,6 @@ import { UrgencyDirective } from './directives/urgency.directive';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 import { PipePipe } from './pipe.pipe';
 
-
 @NgModule({
   declarations: [
     AppComponent,

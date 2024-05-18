@@ -51,17 +51,17 @@ export class MyAppointmentsComponent {
         console.error('Error deleting appointment:', error);
       });
     }
-    makeUrgent(appointmentId: string) {
-        this.AppointmentService.findAppointmentByID(appointmentId)
-          .subscribe(appointment => {
-            if (appointment && !this.isUrgentUpdated) {
-              this.appointment = appointment;
-              this.AppointmentService.updateUrgency(appointment);
-              this.isUrgentUpdated = true;
-              !this.isUrgent
-            }
-          });
-      this.isUrgentUpdated = false
-    }
+  makeUrgent(appointmentId: string) {
+      this.AppointmentService.findAppointmentByID(appointmentId)
+        .subscribe(appointment => {
+          if (appointment && !this.isUrgentUpdated) {
+            this.appointment = appointment;
+            this.AppointmentService.updateUrgency(appointment);
+            this.isUrgentUpdated = true;
+            !this.isUrgent
+          }
+        });
+    this.isUrgentUpdated = false
+  }
 
 }

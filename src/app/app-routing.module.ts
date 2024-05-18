@@ -9,6 +9,7 @@ import { DocInfComponent } from './doc-inf/doc-inf.component';
 import { AuthGuardService } from './services/auth-guard.service';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 
+
 const routes: Routes = [
   { path: '', redirectTo: 'Register', pathMatch: 'full'},
   { path: 'Register', component: RegisterComponent },
@@ -23,6 +24,8 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+
+
   exports: [RouterModule]
 })
 export class AppRoutingModule { }

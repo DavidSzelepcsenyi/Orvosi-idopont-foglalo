@@ -2,7 +2,7 @@
   "hosting": [
     {
       "target": "webker",
-      "source": ".",
+      "public": ".",
       "frameworksBackend": {}
     }
   ]
