@@ -8,14 +8,46 @@
     <mat-sidenav>
       <mat-nav-list>
         <span class="entry">
-            <a routerLink="/DoctorsSchedule">Doctor's Schedule</a>
-            <a *ngIf="!AuthService.isLoggedIn" routerLink="/Login">Login</a>
-            <a *ngIf="!AuthService.isLoggedIn" routerLink="/Register">Register</a>
-            <a routerLink="/Appointments">Appointments</a>
-            <a routerLink="/MyAppointments">My Appointments</a>
-            <a routerLink="/AddSchedule">Schedule</a>
-            <a routerLink="/AddDocInf">Add Doctor's information</a>
-            <button mat-button color="warn" (click)="logout()" *ngIf="AuthService.isLoggedIn">Logout</button>
+          <mat-card>
+            <mat-card-content>
+              <a routerLink="/DoctorsSchedule">Doctor's Schedule</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card *ngIf="!AuthService.isLoggedIn">
+            <mat-card-content>
+              <a routerLink="/Login">Login</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card *ngIf="!AuthService.isLoggedIn">
+            <mat-card-content>
+              <a routerLink="/Register">Register</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content>
+              <a routerLink="/Appointments">Make Appointment</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content>
+              <a routerLink="/MyAppointments">My Appointments</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content>
+              <a routerLink="/AddSchedule">Schedule</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card>
+            <mat-card-content>
+              <a routerLink="/AddDocInf">Add Doctor's information</a>
+            </mat-card-content>
+          </mat-card>
+          <mat-card *ngIf="AuthService.isLoggedIn">
+            <mat-card-content>
+              <button mat-button color="warn" (click)="logout()">Logout<mat-icon>logout</mat-icon></button>
+            </mat-card-content>
+          </mat-card>
         </span>
       </mat-nav-list>
     </mat-sidenav>

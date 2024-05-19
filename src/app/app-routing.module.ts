@@ -11,7 +11,7 @@ import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.co
 
 
 const routes: Routes = [
-  { path: '', redirectTo: 'Register', pathMatch: 'full'},
+  { path: '', redirectTo: 'DoctorsSchedule', pathMatch: 'full'},
   { path: 'Register', component: RegisterComponent },
   { path: 'Login', component: LoginComponent },
   { path: 'Appointments', canActivate: [AuthGuardService] ,component: AppointmentsComponent },

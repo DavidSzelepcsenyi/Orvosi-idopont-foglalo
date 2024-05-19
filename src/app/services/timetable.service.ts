@@ -1,6 +1,8 @@
 import { Injectable } from '@angular/core';
 import { AngularFirestore } from "@angular/fire/compat/firestore"
 import { Timetable } from '../model/timetable';
+import { Observable } from 'rxjs';
+
 
 @Injectable({
   providedIn: 'root'
@@ -16,8 +18,12 @@ export class TimetableService {
       .doc(timetable.id).set(timetable.toJSON())
   }
 
-  findAll() {
-    return this.firestore.collection<Timetable>(this.collectionName).valueChanges()
+  findAll(): Observable<Array<Timetable>> {
+    return this.firestore.collection<Timetable>
+    (this.collectionName, ref => ref
+      .orderBy("id", "asc")
+    )
+    .valueChanges()
   }
 
   findTimetableByID(id: string) {

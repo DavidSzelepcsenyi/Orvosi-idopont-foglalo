@@ -15,7 +15,7 @@
     <div *ngFor="let doctor of doctors" id="doctor-container">
       <div>
         <mat-radio-button [value]="doctor.id"></mat-radio-button>
-        <label for="selectedDoctor">{{ doctor.lastName}} {{ doctor.firstName}}</label>
+        <label for="selectedDoctor">Dr. {{ doctor.lastName}} {{ doctor.firstName}}</label>
         <br>
       </div>
       <br>

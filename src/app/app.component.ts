@@ -3,6 +3,7 @@ import {Component,ViewChild,} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
+import {MatCardModule} from '@angular/material/card';
 
 
 @Component({

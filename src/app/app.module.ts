@@ -23,7 +23,6 @@ import { MatListModule } from "@angular/material/list"
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatInputModule } from '@angular/material/input';
 import { ReactiveFormsModule } from '@angular/forms';
-import { MenuComponent } from './menu/menu.component';
 import { ScheduleComponent } from './schedule/schedule.component';
 import { DocInfComponent } from './doc-inf/doc-inf.component';
 import { MatRadioModule } from '@angular/material/radio';
@@ -31,6 +30,8 @@ import { MatIconModule } from '@angular/material/icon';
 import { UrgencyDirective } from './directives/urgency.directive';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 import { PipePipe } from './pipe.pipe';
+import {MatCardModule} from '@angular/material/card';
+
 
 @NgModule({
   declarations: [
@@ -39,7 +40,6 @@ import { PipePipe } from './pipe.pipe';
     RegisterComponent,
     AppointmentsComponent,
     MyAppointmentsComponent,
-    MenuComponent,
     ScheduleComponent,
     DocInfComponent,
     UrgencyDirective,
@@ -50,6 +50,7 @@ import { PipePipe } from './pipe.pipe';
     AngularFireModule.initializeApp(environment.firebaseConfig),
     FirestoreModule,
     FormsModule,
+    MatCardModule,
     MatSidenavModule,
     MatButtonModule,
     MatListModule,

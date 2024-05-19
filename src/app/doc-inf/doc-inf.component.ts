@@ -9,6 +9,8 @@ import { TimetableService } from '../services/timetable.service';
 import { Timetable } from '../model/timetable';
 import { UserService } from '../services/user.service';
 
+
+
 @Component({
   selector: 'app-doc-inf',
   templateUrl: './doc-inf.component.html',
@@ -53,9 +55,9 @@ export class DocInfComponent implements OnInit {
         this.doctors = doctors
       })
     });
-    
-  }
 
+
+  }
   onSubmit() {
     const roomNumber = this.docInfFormGroup.get("roomNumber")?.value;
     const selectedTimetable = this.docInfFormGroup.get("selectedTimetable")?.value;
