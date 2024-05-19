@@ -39,7 +39,7 @@ export class RegisterComponent {
         this.userService.create(user);
       })
       .catch((error) => {
-        console.error('Error registering user: ', error);
+        window.location.reload()
       });
       this.router.navigate(['/DoctorsSchedule']);
   }

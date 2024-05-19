@@ -33,13 +33,13 @@
               <a routerLink="/MyAppointments">My Appointments</a>
             </mat-card-content>
           </mat-card>
-          <mat-card>
-            <mat-card-content *ngIf="doctor()">
+          <mat-card *ngIf="doctor">
+            <mat-card-content>
               <a routerLink="/AddSchedule">Schedule</a>
             </mat-card-content>
           </mat-card>
-          <mat-card>
-            <mat-card-content *ngIf="doctor()">
+          <mat-card *ngIf="doctor">
+            <mat-card-content>
               <a routerLink="/AddDocInf">Add Doctor's information</a>
             </mat-card-content>
           </mat-card>

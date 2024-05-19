@@ -42,22 +42,22 @@ export class DocInfComponent implements OnInit {
 
 
   ngOnInit() {
-    this.authService.user$.subscribe(user => {
-      this.currentUser = user;
-      this.TimetableService.findAll().subscribe(timetables => {
-        this.timetables = timetables;
+    if(this.authService.isLoggedIn){
+      this.authService.user$.subscribe(user => {
+        this.currentUser = user;
+        this.TimetableService.findAll().subscribe(timetables => {
+          this.timetables = timetables;
+        });
+        this.UserService.findUserByID(this.currentUser?.uid).subscribe(users => {
+          const user = users[0]
+          this.firstName = user?.firstName;
+          this.lastName = user?.lastName;
+        });
+        this.docInfService.findAll().subscribe(doctors =>{
+          this.doctors = doctors
+        })
       });
-      this.UserService.findUserByID(this.currentUser.uid).subscribe(users => {
-        const user = users[0]
-        this.firstName = user?.firstName;
-        this.lastName = user?.lastName;
-      });
-      this.docInfService.findAll().subscribe(doctors =>{
-        this.doctors = doctors
-      })
-    });
-
-
+    }
   }
   onSubmit() {
     const roomNumber = this.docInfFormGroup.get("roomNumber")?.value;

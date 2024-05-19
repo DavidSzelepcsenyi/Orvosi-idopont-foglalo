@@ -23,14 +23,17 @@ export class MyAppointmentsComponent {
   ) { }
 
   ngOnInit() {
-    this.authService.user$.subscribe(user => {
-      this.currentUser = user;
-    });
-    this.AppointmentService.findAll().subscribe(appointments => {
-      this.Appointments = appointments;
-      this.MyAppointments = this.Appointments.filter(appointment => appointment.patient === this.currentUser.uid);
-    });
-    this.isUrgentUpdated = false;
+    if(this.authService.isLoggedIn){
+      this.authService.user$.subscribe(user => {
+        this.currentUser = user;
+      });
+      this.AppointmentService.findAll().subscribe(appointments => {
+        this.Appointments = appointments;
+        this.MyAppointments = this.Appointments.filter(appointment => appointment.patient === this.currentUser?.uid);
+      });
+      this.isUrgentUpdated = false;
+    }
+
   }
 
   onDeleteAppointment(appointmentId: string) {

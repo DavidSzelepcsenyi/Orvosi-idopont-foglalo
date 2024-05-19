@@ -25,7 +25,7 @@ export class LoginComponent {
         this.router.navigate(['/MyAppointments']);
       })
       .catch((error) => {
-        alert("User is not registered")
+        window.location.reload()
       });
   }
 }

@@ -47,5 +47,6 @@ export class UserService {
     return this.firestore.collection<User>(this.collectionName).doc(id).delete()
   }
   
+  
 }
 
