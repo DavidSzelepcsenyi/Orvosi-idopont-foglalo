@@ -4,6 +4,7 @@ h2{
 }
 form{
     text-align: center;
+    margin-bottom: 200px;
 }
 #schedule-container{
     text-align: center;
@@ -17,6 +18,3 @@ form{
 .highlight {
     background-color: yellow;
   }
-button{
-    margin-bottom: 200px;
-}

@@ -1,4 +1,4 @@
-<div *ngFor="let doctor of doctors">
+<div *ngFor="let doctor of doctors" id="main">
     <h2>Dr.{{ doctor.firstName }} {{ doctor.lastName }}</h2>
     <div *ngIf="doctor.ttable">
       <h3>Schedule:</h3>
@@ -13,7 +13,7 @@
     </div>
     </div>
   </div>
-  <div id="main"></div>
+
 
 
 
