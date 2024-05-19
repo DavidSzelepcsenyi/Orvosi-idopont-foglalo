@@ -1,9 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { AuthService } from '../services/auth.service';
-import { Router } from '@angular/router';
-import { AngularFirestore } from "@angular/fire/compat/firestore"
-import { DocInfService } from '../services/doc-inf.service';
-import { UserService } from '../services/user.service';
 import { Appointment } from '../model/appointment';
 import { AppointmentService } from '../services/appointment.service';
 
@@ -22,13 +18,8 @@ export class MyAppointmentsComponent {
   isUrgent= false;
 
   constructor( 
-    private docInfService: DocInfService, 
-    private router: Router, 
-    private firestore: AngularFirestore, 
     private authService: AuthService, 
     private AppointmentService : AppointmentService, 
-    private UserService: UserService,
-    private DoctorService: DocInfService
   ) { }
 
   ngOnInit() {
@@ -53,7 +44,8 @@ export class MyAppointmentsComponent {
     }
   makeUrgent(appointmentId: string) {
       this.AppointmentService.findAppointmentByID(appointmentId)
-        .subscribe(appointment => {
+        .subscribe(appointments => {
+          const appointment = appointments[0]
           if (appointment && !this.isUrgentUpdated) {
             this.appointment = appointment;
             this.AppointmentService.updateUrgency(appointment);

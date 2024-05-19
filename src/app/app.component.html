@@ -34,12 +34,12 @@
             </mat-card-content>
           </mat-card>
           <mat-card>
-            <mat-card-content>
+            <mat-card-content *ngIf="doctor()">
               <a routerLink="/AddSchedule">Schedule</a>
             </mat-card-content>
           </mat-card>
           <mat-card>
-            <mat-card-content>
+            <mat-card-content *ngIf="doctor()">
               <a routerLink="/AddDocInf">Add Doctor's information</a>
             </mat-card-content>
           </mat-card>

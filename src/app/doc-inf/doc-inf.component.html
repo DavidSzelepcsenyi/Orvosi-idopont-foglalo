@@ -6,7 +6,7 @@
     <br>
     <mat-radio-group formControlName="selectedTimetable">
     <div *ngFor="let timetable of timetables" id="schedule-container">
-      <div>
+      <div appHighlightOnSelect>
         <mat-radio-button [value]="timetable.id"></mat-radio-button>
         <br>
         <p>Monday Start: {{ timetable.monStart }}</p>

@@ -47,7 +47,8 @@ export class DocInfComponent implements OnInit {
       this.TimetableService.findAll().subscribe(timetables => {
         this.timetables = timetables;
       });
-      this.UserService.findUserByID(this.currentUser.uid).subscribe(user => {
+      this.UserService.findUserByID(this.currentUser.uid).subscribe(users => {
+        const user = users[0]
         this.firstName = user?.firstName;
         this.lastName = user?.lastName;
       });

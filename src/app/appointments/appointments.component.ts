@@ -42,15 +42,24 @@ export class AppointmentsComponent implements OnInit {
 
   ngOnInit() {
     this.authService.user$.subscribe(user => {
-      this.currentUser = user;
-      this.docInfService.findAll().subscribe(doctors => {
-        this.doctors = doctors;
-      });
-      this.UserService.findUserByID(this.currentUser.uid).subscribe(user => {
-        this.patientFirstName = user?.firstName;
-        this.patientLastName = user?.lastName;
+      if (user) {
+        this.currentUser = user;
+      }
+      this.UserService.findUserByID(this.currentUser.uid).subscribe(users => {
+        const user = users[0];
+        if (user) {
+          this.patientFirstName = user.firstName;
+          this.patientLastName = user.lastName;
+        }
       });
     });
+
+    this.docInfService.findAll().subscribe(doctors => {
+      this.doctors = doctors;
+    });
+
+
+
   }
 
   onSubmit() {
@@ -59,7 +68,8 @@ export class AppointmentsComponent implements OnInit {
     const End = this.appointmentFormGroup.get("End")?.value;
     const selectedDoctor = this.appointmentFormGroup.get("selectedDoctor")?.value;
 
-    this.DoctorService.findDoctorByID(selectedDoctor).subscribe(doctor => {
+    this.DoctorService.findDoctorByID(selectedDoctor).subscribe(doctors => {
+      const doctor = doctors[0];
       this.doctorFirstName = doctor?.firstName;
       this.doctorLastName = doctor?.lastName;
       this.room = doctor?.room

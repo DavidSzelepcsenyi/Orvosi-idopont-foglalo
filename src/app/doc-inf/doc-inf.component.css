@@ -14,3 +14,6 @@ form{
     margin-left: auto;
     margin-right: auto;
 }
+.highlight {
+    background-color: yellow;
+  }

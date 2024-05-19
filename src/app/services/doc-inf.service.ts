@@ -13,7 +13,7 @@ export class DocInfService {
 
   collectionName = "DocInf"
 
-  create(doctor : Doctor) {
+  create(doctor : Doctor): Promise<void> {
     return this.firestore.collection<Doctor>(this.collectionName)
       .doc(doctor.id).set(doctor.toJSON())
   }
@@ -26,17 +26,20 @@ export class DocInfService {
     .valueChanges()
   }
 
-  findDoctorByID(id: string) {
-    return this.firestore.collection<Doctor>(this.collectionName).doc(id).valueChanges()
+  findDoctorByID(id: string): Observable<Array<Doctor>> {
+    return this.firestore.collection<Doctor>
+    (this.collectionName, ref => ref
+      .where("id", "==", id))
+    .valueChanges()
   }
 
-  update(doctor : Doctor, tmtbl : string, roomnumer : string) {
+  update(doctor : Doctor, tmtbl : string, roomnumer : string): Promise<void> {
     return this.firestore.collection<Doctor>(this.collectionName)
       .doc(doctor.id)
       .update({ttable: tmtbl, room: roomnumer})
   }
 
-  delete(id: string) {
+  delete(id: string): Promise<void> {
     return this.firestore.collection<Doctor>(this.collectionName).doc(id).delete()
   }
 

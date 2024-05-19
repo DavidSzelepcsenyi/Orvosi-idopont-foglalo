@@ -41,7 +41,7 @@ export class RegisterComponent {
       .catch((error) => {
         console.error('Error registering user: ', error);
       });
-      this.router.navigate(['/Login']);
+      this.router.navigate(['/DoctorsSchedule']);
   }
   
 }

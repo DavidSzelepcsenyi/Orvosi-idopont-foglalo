@@ -3,7 +3,9 @@ import {Component,ViewChild,} from '@angular/core';
 import { MatSidenav } from '@angular/material/sidenav';
 import { AuthService } from './services/auth.service';
 import { Router } from '@angular/router';
-import {MatCardModule} from '@angular/material/card';
+import { UserService } from './services/user.service';
+import { Observable, of } from 'rxjs';
+import { map, catchError, take } from 'rxjs/operators';
 
 
 @Component({
@@ -23,6 +25,7 @@ export class AppComponent {
     private observer: BreakpointObserver, 
     public AuthService: AuthService, 
     private router : Router, 
+    public UserService: UserService,
   ) {}
 
   ngDoCheck() {
@@ -43,5 +46,18 @@ export class AppComponent {
       .catch(error => {
         console.error('Error logging out:', error);
       });
+  }
+  doctor(): Observable<boolean> {
+    if (this.AuthService.isLoggedIn) {
+      const uid = this.AuthService.currentUser()?.uid;
+      if (uid) {
+        return this.UserService.findUserByID(uid).pipe(
+          take(1),
+          map(users => users.length > 0 && users[0].isDoctor),
+          catchError(() => of(false))
+        );
+      }
+    }
+    return of(false);
   }
 }

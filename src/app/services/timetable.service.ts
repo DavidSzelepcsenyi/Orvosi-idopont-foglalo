@@ -13,7 +13,7 @@ export class TimetableService {
 
   collectionName = "Timetable"
 
-  create(timetable : Timetable) {
+  create(timetable : Timetable): Promise<void> {
     return this.firestore.collection<Timetable>(this.collectionName)
       .doc(timetable.id).set(timetable.toJSON())
   }
@@ -26,16 +26,20 @@ export class TimetableService {
     .valueChanges()
   }
 
-  findTimetableByID(id: string) {
-    return this.firestore.collection<Timetable>(this.collectionName).doc(id).valueChanges()
+  findTimetableByID(id: string): Observable<Array<Timetable>> {
+    return this.firestore.collection<Timetable>
+    (this.collectionName,  ref => ref
+      .where("id", "==", id)
+    )
+    .valueChanges()
   }
 
-  update(timetable: Timetable) {
+  update(timetable: Timetable): Promise<void> {
     return this.firestore.collection<Timetable>(this.collectionName)
       .doc(timetable.id).set(timetable.toJSON())
   }
 
-  delete(id: string) {
+  delete(id: string): Promise<void> {
     return this.firestore.collection<Timetable>(this.collectionName).doc(id).delete()
   }
 }

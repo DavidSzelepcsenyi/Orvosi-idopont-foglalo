@@ -1,6 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { AppRoutingModule } from './app-routing.module';
+import { AppRoutingModule, routes } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { initializeApp, provideFirebaseApp } from '@angular/fire/app';
 import { getAuth, provideAuth } from '@angular/fire/auth';
@@ -31,6 +31,9 @@ import { UrgencyDirective } from './directives/urgency.directive';
 import { DoctorsScheduleComponent } from './doctors-schedule/doctors-schedule.component';
 import { PipePipe } from './pipe.pipe';
 import {MatCardModule} from '@angular/material/card';
+import { HighlightOnSelectDirective } from './directives/highlight.on.select.directive';
+import { AuthService } from './services/auth.service';
+import { provideRouter, withComponentInputBinding } from '@angular/router';
 
 
 @NgModule({
@@ -45,6 +48,7 @@ import {MatCardModule} from '@angular/material/card';
     UrgencyDirective,
     DoctorsScheduleComponent,
     PipePipe,
+    HighlightOnSelectDirective,
   ],
   imports: [
     AngularFireModule.initializeApp(environment.firebaseConfig),
@@ -69,7 +73,9 @@ import {MatCardModule} from '@angular/material/card';
     provideStorage(() => getStorage())
   ],
   providers: [
-    provideAnimationsAsync()
+    provideAnimationsAsync(),
+    AuthService,
+    provideRouter(routes, withComponentInputBinding())
   ],
   bootstrap: [AppComponent]
 })

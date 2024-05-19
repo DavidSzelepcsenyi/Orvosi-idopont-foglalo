@@ -3,7 +3,6 @@ import { Auth, UserCredential, signInWithEmailAndPassword, createUserWithEmailAn
 import { AngularFireAuth } from '@angular/fire/compat/auth';
 import { Observable } from 'rxjs';
 import { map } from 'rxjs/operators';
-import { UserService } from './user.service';
 
 @Injectable({
   providedIn: 'root'
@@ -12,7 +11,7 @@ export class AuthService {
 
   user$: Observable<any>;
 
-  constructor(private afAuth: AngularFireAuth, private auth: Auth, public UserService : UserService) {
+  constructor(private afAuth: AngularFireAuth, private auth: Auth) {
     this.user$ = this.afAuth.authState.pipe(
       map(user => user)
     );
@@ -33,10 +32,8 @@ export class AuthService {
   get isLoggedIn(): boolean {
     return this.auth.currentUser !== null
   }
-
-  isDoctor(): Observable<boolean> {
-    return this.user$.pipe(
-      map(user => user?.isDoctor || false)
-    );
+  currentUser(): User | null {
+    return this.auth.currentUser
   }
+  
 }
