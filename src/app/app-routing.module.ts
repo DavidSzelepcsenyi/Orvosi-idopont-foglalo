@@ -14,7 +14,10 @@ const redirectToLogin = () => redirectUnauthorizedTo(["Login"])
 
 
 export const routes: Routes = [
-  { path: '', redirectTo: 'DoctorsSchedule', pathMatch: 'full'},
+  {
+    path: "",
+    component: DoctorsScheduleComponent,
+  },
   { path: 'Register', component: RegisterComponent },
   { path: 'Login', component: LoginComponent },
   { 
